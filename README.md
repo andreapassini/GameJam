@@ -70,4 +70,8 @@ Res: 600x900
     c - Apply gravity switch also to enemy to kill or zone-out them
     d - Disabling controls with a particular gravity switch
     
-### 2 - 
+### 2 - Dream / Nightmare
+
+
+### 3 - Double Level
+
