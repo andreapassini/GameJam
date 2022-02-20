@@ -57,6 +57,11 @@ GitFlow is a workflow that will helps in keeping branching in order and keeping 
       develop - Starting from main, where all the new feature are integrated
       feature - Create a new branch for each feature
       
+
+## Project Settings
+
+Res: 600x900
+
 ## Ideas
 
 ### 1 - Gravity switch and camera rotation.
