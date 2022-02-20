@@ -13,10 +13,14 @@ public class Movement : MonoBehaviour
 
 	[SerializeField] LayerMask whatIsGround;
 	[SerializeField] Transform groundCheck;
+
+	[SerializeField] float jumpBuffer = 1f;
+
+	private float _lastTimeJumpPressed = -100f;
+
 	const float groundedRadius = .2f;
 
-	[SerializeField] GameObject tileRed;
-	[SerializeField] GameObject tileBlue;
+	public LevelSwapper LevelSwapper;
 
 	private void Awake()
 	{
@@ -30,14 +34,23 @@ public class Movement : MonoBehaviour
 		_input = Input.GetAxisRaw("Horizontal");
 		//Potrei anche usare un vettore normalizzato
 
-		if (Input.GetKeyDown(KeyCode.Space) && _isGrounded) {
-			_isJumping = true;
-		}
+		if (Input.GetButtonDown("Jump")) 
+		{
+			if(!_isGrounded)
+				_lastTimeJumpPressed = Time.time;
+
+			if(_isGrounded)
+				_isJumping = true;
+        }
 	}
 
 	private void FixedUpdate()
 	{
 		_rb.velocity = new Vector2(_input * speed, _rb.velocity.y);
+
+		//Controllo che il Player non sia in aria
+		_isGrounded = false;
+		_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 
 		Jump();
 
@@ -60,33 +73,43 @@ public class Movement : MonoBehaviour
 
 	private void Jump()
 	{
-		//Controllo che il Player non sia in aria
-		_isGrounded = false;
-		_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-
-		if (!_isGrounded) {
+		if (!_isGrounded)
+		{
 			return;
 		}
 
-		if (_isJumping) {
-			SwapTile();
+		if (_isJumping)
+		{
+			Debug.Log("Jump");
 
-			//rb.velocity = Vector2.up * jumpForce;
 			_rb.AddForce(transform.up * (jumpForce), ForceMode2D.Impulse);
 			_isJumping = false;
-		}
-	}
+			_lastTimeJumpPressed = 0f;
 
-	// Swap from a level to another
-	private void SwapTile()
-	{
-		if (tileBlue.activeSelf) {
-			tileBlue.SetActive(false);
-			tileRed.SetActive(true);
-			return;
+			LevelSwapper.SwapTile();
 		}
 
-		tileRed.SetActive(false);
-		tileBlue.SetActive(true);
+        if (HasBufferdJump())
+        {
+			Debug.Log("Buffer Jump");
+
+			// Add a bit more force to contrast the difference betweeen collider and groundCheck
+			_rb.AddForce(transform.up * (jumpForce) * 2f, ForceMode2D.Impulse);
+			_isJumping = false;
+			_lastTimeJumpPressed = 0f;
+
+			LevelSwapper.SwapTile();
+		}
+
 	}
+
+	private bool HasBufferdJump()
+    {
+		if (_lastTimeJumpPressed + jumpBuffer > Time.time)
+        {
+			return true;
+		}		
+
+		return false;
+    }
 }
