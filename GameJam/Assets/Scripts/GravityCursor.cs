@@ -1,9 +1,15 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GravityCursor : MonoBehaviour
 {
     public float GravityRadius = 2f;
     public float GravityForce = 20f;
+    private System.Windows.Forms.Timer timer1; 
+    private int counter = 60;
+
+    private float _input;
 
     [SerializeField] private Transform _player;
 
@@ -46,7 +52,7 @@ public class GravityCursor : MonoBehaviour
         }
     }
 
-    //Calcolo la forza di Gravità come se si fosse sulla terra
+    //Calcolo la forza di Gravitï¿½ come se si fosse sulla terra
     public float Gravity(float mass)
     {
         float force = mass * GravityForce;
@@ -62,4 +68,37 @@ public class GravityCursor : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(_mousePosition, .5f);
 	}
+
+    private void Update(){
+
+         _input = Input.GetMouseButton(0);
+
+    }
+
+   
+   private void GravityTimer()
+   {
+        if (_input){
+
+        timer1 = new System.Windows.Forms.Timer();
+        timer1.Tick += new EventHandler(timer1_Tick);
+        timer1.Interval = 1000; // 1 secondo
+        timer1.Start();
+
+        }
+
+    }
+
+    private void TimerTick()
+    {
+        counter--;
+        GravityRadius--;
+
+        if (counter == 0 or _input=false)
+            timer1.Stop();
+
+        }
+
+    }
+
 }
