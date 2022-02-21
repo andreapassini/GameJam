@@ -80,8 +80,6 @@ public class Movement : MonoBehaviour
 
 		if (_isJumping)
 		{
-			Debug.Log("Jump");
-
 			_rb.AddForce(transform.up * (jumpForce), ForceMode2D.Impulse);
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
@@ -91,8 +89,6 @@ public class Movement : MonoBehaviour
 
         if (HasBufferdJump())
         {
-			Debug.Log("Buffer Jump");
-
 			// Add a bit more force to contrast the difference betweeen collider and groundCheck
 			_rb.AddForce(transform.up * (jumpForce) * 2f, ForceMode2D.Impulse);
 			_isJumping = false;

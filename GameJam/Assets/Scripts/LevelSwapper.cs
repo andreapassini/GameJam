@@ -5,18 +5,17 @@ public class LevelSwapper: MonoBehaviour
 	[SerializeField] private GameObject tileRed;
 	[SerializeField] private GameObject tileBlue;
 
-	private bool blueActive;
+	private bool _blueActive = false;
 
 	private void Start()
 	{
-		tileRed.SetActive(true);
-		blueActive = false;
+		_blueActive = !tileRed.activeSelf;
 	}
 
 	// Swap from a level to another
 	public void SwapTile()
 	{
-		if (blueActive)
+		if (_blueActive)
 		{
 			SwapRed();
 			return;
@@ -25,19 +24,19 @@ public class LevelSwapper: MonoBehaviour
 		SwapBlue();
 	}
 
-	public void SwapBlue()
-	{
-		tileRed.SetActive(false);
-		tileBlue.SetActive(true);
-
-		blueActive = false;
-	}
-
 	public void SwapRed()
 	{
 		tileBlue.SetActive(false);
 		tileRed.SetActive(true);
 
-		blueActive = true;
+		_blueActive = false;
+	}
+
+	public void SwapBlue()
+	{
+		tileRed.SetActive(false);
+		tileBlue.SetActive(true);
+
+		_blueActive = true;
 	}
 }

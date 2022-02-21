@@ -672,7 +672,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87
   groundCheck: {fileID: 1548751119}
-  jumpBuffer: 1
+  jumpBuffer: 0.5
   LevelSwapper: {fileID: 36541157}
 --- !u!50 &1269454981
 Rigidbody2D:
@@ -719,7 +719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548751118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.048, z: 0}
+  m_LocalPosition: {x: 0, y: -0.922, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269454976}
