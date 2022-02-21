@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public static class GameManager
 {
@@ -20,4 +21,6 @@ public static class GameManager
 
 		// Add Transition
 	}
+
+
 }
