@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public static class GameManager
 {
-	// I could use an FSM
+	// I could use a FSM
 
-	public void PlayStartScene()
+	public static void PlayStartScene()
 	{
 		// Load scene
 		SceneManager.LoadScene("Start");
@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
 		// Add Transition
 	}
 
-	public void PlayMainScene()
+	public static void PlayMainScene()
 	{
 		// Load scene
+		Debug.Log("Called Play Scene Main");
 		SceneManager.LoadScene("Main");
 
 		// Add Transition
