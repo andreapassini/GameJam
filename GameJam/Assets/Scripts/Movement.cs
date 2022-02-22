@@ -22,11 +22,15 @@ public class Movement : MonoBehaviour
 
 	public LevelSwapper LevelSwapper;
 
+	private Animator _animator;
+
 	private void Awake()
 	{
 		_rb = gameObject.GetComponent<Rigidbody2D>();
 		_isJumping = false;
 		_isGrounded = false;
+
+		_animator = GetComponent<Animator>();
 	}
 
 	private void Update()
@@ -42,6 +46,15 @@ public class Movement : MonoBehaviour
 			if(_isGrounded)
 				_isJumping = true;
         }
+
+		// Trigger the animation Run
+		if(_input != 0)
+        {
+			_animator.SetBool("isRunning", true);
+        } else
+        {
+			_animator.SetBool("isRunning", false);
+		}
 	}
 
 	private void FixedUpdate()
@@ -75,6 +88,8 @@ public class Movement : MonoBehaviour
 	{
 		if (!_isGrounded)
 		{
+			_animator.SetBool("isJumping", false);
+
 			return;
 		}
 
@@ -85,6 +100,10 @@ public class Movement : MonoBehaviour
 			_lastTimeJumpPressed = 0f;
 
 			LevelSwapper.SwapTile();
+
+			_animator.SetBool("isJumping", true);
+
+			return;
 		}
 
         if (HasBufferdJump())
@@ -95,7 +114,11 @@ public class Movement : MonoBehaviour
 			_lastTimeJumpPressed = 0f;
 
 			LevelSwapper.SwapTile();
+
+			_animator.SetBool("isJumping", true);
 		}
+
+		_animator.SetBool("isJumping", false);
 
 	}
 
