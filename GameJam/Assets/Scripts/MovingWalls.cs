@@ -1,11 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingWalls : MonoBehaviour
 {
     [SerializeField] Transform leftWall;
     [SerializeField] Transform rightWall;
+
+    [SerializeField] Transform left_collisionCheck;
+    [SerializeField] Transform right_collisionCheck;
+
+    public float StopRadius = .2f;
+    [SerializeField] LayerMask rightWhatIsStop;
+    [SerializeField] LayerMask leftWhatIsStop;
 
     public float _movingRate;
 
@@ -18,12 +24,14 @@ public class MovingWalls : MonoBehaviour
 
     private IEnumerator MoveWalls()
     {
-        while (!_stop)
+        while (!CheckCollision())
         {
             Move();
 
             yield return new WaitForSeconds(_movingRate);
-        } 
+        }
+
+        Debug.Log("Hit");
     }
 
     private void Move()
@@ -34,10 +42,26 @@ public class MovingWalls : MonoBehaviour
         rightWall.position -= _spaceMove;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.TryGetComponent(out MovingWalls tar))
-        {
-        }
+    public bool CheckCollision()
+	{
+        if (Physics2D.OverlapCircle(left_collisionCheck.position, StopRadius, leftWhatIsStop))
+            return true;
+
+        if (Physics2D.OverlapCircle(right_collisionCheck.position, StopRadius, rightWhatIsStop))
+            return true;
+
+        if (_stop)
+            return true;
+
+        Debug.Log("NoHit");
+
+        return false;
+	}
+
+	private void OnDrawGizmos()
+	{
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(left_collisionCheck.position, StopRadius);
+        Gizmos.DrawWireSphere(right_collisionCheck.position, StopRadius);
     }
 }

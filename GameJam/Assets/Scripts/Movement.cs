@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
 
 	private float _lastTimeJumpPressed = -100f;
 
-	const float groundedRadius = .2f;
+	const float groundedRadius = .1f;
 
 	public LevelSwapper LevelSwapper;
 
