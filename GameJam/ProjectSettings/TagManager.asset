@@ -20,7 +20,7 @@ TagManager:
   - RightMovingWall
   - RedTilesCollision
   - BlueTilesCollision
-  - 
+  - Bed
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4119806731
     locked: 0
   - name: Walls
     uniqueID: 3613916195
