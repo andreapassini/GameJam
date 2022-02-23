@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 829102440}
   - component: {fileID: 829102439}
   - component: {fileID: 829102441}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Blue Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 1724697408}
   - component: {fileID: 1724697407}
   - component: {fileID: 1724697409}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Red Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -939,6 +939,10 @@ PrefabInstance:
       propertyPath: LevelSwapper
       value: 
       objectReference: {fileID: 36541157}
+    - target: {fileID: 1085198949619918716, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 6231
+      objectReference: {fileID: 0}
     - target: {fileID: 1085198949619918727, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
       propertyPath: m_Name
       value: Player

@@ -18,8 +18,8 @@ TagManager:
   - Enemy
   - LeftMovingWall
   - RightMovingWall
-  - 
-  - 
+  - RedTilesCollision
+  - BlueTilesCollision
   - 
   - 
   - 

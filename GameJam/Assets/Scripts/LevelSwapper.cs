@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class LevelSwapper: MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class LevelSwapper: MonoBehaviour
 
 	private void Start()
 	{
-		_blueActive = !tileRed.activeSelf;
+		SwapRed();
 	}
 
 	// Swap from a level to another
@@ -26,17 +27,36 @@ public class LevelSwapper: MonoBehaviour
 
 	public void SwapRed()
 	{
-		tileBlue.SetActive(false);
-		tileRed.SetActive(true);
+		Physics2D.IgnoreLayerCollision(7, 11, false);
+		Physics2D.IgnoreLayerCollision(7, 12, true);
+
+		TilemapRenderer spriteRenderer = tileBlue.GetComponent<TilemapRenderer> ();
+        spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+
+		spriteRenderer = tileRed.GetComponent<TilemapRenderer> ();
+        spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+
+	    
+
+
 
 		_blueActive = false;
 	}
 
 	public void SwapBlue()
 	{
-		tileRed.SetActive(false);
-		tileBlue.SetActive(true);
+		Physics2D.IgnoreLayerCollision(7, 12, false);
+		Physics2D.IgnoreLayerCollision(7, 11, true);
+
+		TilemapRenderer spriteRenderer = tileRed.GetComponent<TilemapRenderer> ();
+        spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+
+		spriteRenderer = tileBlue.GetComponent<TilemapRenderer> ();
+        spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+
+		
 
 		_blueActive = true;
 	}
+
 }
