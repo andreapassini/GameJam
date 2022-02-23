@@ -31,7 +31,7 @@ public class MovingWalls : MonoBehaviour
             yield return new WaitForSeconds(_movingRate);
         }
 
-        Debug.Log("Hit");
+        
     }
 
     private void Move()
@@ -44,24 +44,15 @@ public class MovingWalls : MonoBehaviour
 
     public bool CheckCollision()
 	{
-        if (Physics2D.OverlapCircle(left_collisionCheck.position, StopRadius, leftWhatIsStop))
+        if (Physics2D.OverlapCircle(left_collisionCheck.position, StopRadius, leftWhatIsStop)) 
             return true;
 
-        if (Physics2D.OverlapCircle(right_collisionCheck.position, StopRadius, rightWhatIsStop))
-            return true;
+        if (Physics2D.OverlapCircle(right_collisionCheck.position, StopRadius, rightWhatIsStop)) 
+            return true; 
 
         if (_stop)
             return true;
 
-        Debug.Log("NoHit");
-
         return false;
 	}
-
-	private void OnDrawGizmos()
-	{
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(left_collisionCheck.position, StopRadius);
-        Gizmos.DrawWireSphere(right_collisionCheck.position, StopRadius);
-    }
 }

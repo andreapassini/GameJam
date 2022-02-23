@@ -3298,10 +3298,10 @@ MonoBehaviour:
   StopRadius: 0.1
   rightWhatIsStop:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   leftWhatIsStop:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   _movingRate: 0.5
   _stop: 0
 --- !u!1 &1408547705
