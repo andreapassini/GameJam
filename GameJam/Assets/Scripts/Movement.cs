@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
 
 	const float groundedRadius = .1f;
 
-	public LevelSwapper LevelSwapper;
+	private LevelSwapper LevelSwapper;
 
 	private Animator _animator;
 
@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour
 
 		if (_isJumping)
 		{
-			_rb.AddForce(transform.up * (jumpForce), ForceMode2D.Impulse);
+			_rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
 
@@ -118,7 +118,7 @@ public class Movement : MonoBehaviour
 			_animator.SetBool("isJumping", true);
 		}
 
-		_animator.SetBool("isJumping", false);
+		//_animator.SetBool("isJumping", false);
 
 	}
 
