@@ -18,7 +18,9 @@ public class Movement : MonoBehaviour
 
 	private float _lastTimeJumpPressed = -100f;
 
-	const float groundedRadius = .1f;
+	const float groundedRadius = .01f;
+
+	public bool facingRight = true;
 
 	private LevelSwapper LevelSwapper;
 
@@ -77,10 +79,12 @@ public class Movement : MonoBehaviour
 
 	private void Flip()
 	{
-		if (_input > 0) {
-			transform.localEulerAngles = new Vector3(0, 0, 0);
-		} else if (_input < 0) {
-			transform.localEulerAngles = new Vector3(0, 180, 0);
+		if (_input > 0 && !facingRight) {
+			transform.localEulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+			facingRight = !facingRight;
+		} else if (_input < 0 && facingRight) {
+			transform.localEulerAngles = new Vector3(0, 180f, transform.eulerAngles.z);
+			facingRight = !facingRight;
 		}
 	}
 
@@ -95,7 +99,8 @@ public class Movement : MonoBehaviour
 
 		if (_isJumping)
 		{
-			_rb.AddForce(transform.InverseTransformPoint(transform.up * jumpForce) , ForceMode2D.Impulse);
+			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce) , ForceMode2D.Impulse);
+
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
 

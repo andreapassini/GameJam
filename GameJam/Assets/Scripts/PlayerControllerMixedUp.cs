@@ -11,54 +11,47 @@ public class PlayerControllerMixedUp : MonoBehaviour
 
     public float GravityForce = 20f;
 
+    private bool _switched = false;
+
     private Rigidbody2D _rb;
+    private Movement _movement;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _movement = GetComponent<Movement>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (GravitySwitch_Up)
-            Gravity(new Vector3(0, 90, 0));
-
-        if (GravitySwitch_Left)
-            Gravity(new Vector3(0, 0, 0));
-
-        if (OrientationSwitch)
-            SwitchOrientation(new Vector3(0, 90, 0));
+            Gravity(1);
     }
 
-    public void Gravity(Vector3 gravityDir)
+    public void Gravity(int up)
     {
-        //Calcolo la forza di Gravit� come se si fosse sulla terra
+        if (_switched)
+            return;
 
-        //Trovo il vettore che va dal centro del pianeta al corpo
-        // directionToFace = destintion - source
-        //Vector3 gravityUp = ((Vector2)_player.position - _mousePosition);
+        if(up == 1) {
+            _rb.gravityScale *= -1;
+            _switched = true;
 
-        //Vettore Y del Player
-        //Vector3 localUp = _player.up;
-
-        //Applico la forza di attrazione al corpo
-        _rb.gravityScale = 0f;
-        _rb.AddForce(gravityDir.normalized * (_rb.mass * GravityForce));        
+            //Rotate the player in order to face upsideDown
+            Rotation();
+        }
     }
 
-    public void SwitchOrientation(Vector3 gravityDir)
+    public void Rotation()
     {
-        ////Ruoto il player in modo che:
-        ////      - localUp (il suo asse delle Y) segua la direzione di gravityUp
-        Quaternion targetRotation = Quaternion.FromToRotation(transform.up, gravityDir) * transform.rotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 50f * Time.deltaTime);
-    }
+        _rb.freezeRotation = false;
+        transform.eulerAngles = new Vector3(0, 0, 180f);
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, new Vector3(0, 90, 0));
+        _rb.freezeRotation = true;
+
+        // y rotation for upsideDown walk
+        _movement.facingRight = !_movement.facingRight;
     }
 }
