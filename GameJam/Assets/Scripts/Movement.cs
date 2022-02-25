@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour
 	public bool facingRight = true;
 
 	private LevelSwapper LevelSwapper;
-
 	private Animator _animator;
 
 	private void Awake()
@@ -80,10 +79,10 @@ public class Movement : MonoBehaviour
 	private void Flip()
 	{
 		if (_input > 0 && !facingRight) {
-			transform.localEulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+			transform.localEulerAngles = new Vector3(0, transform.eulerAngles.y + 180f, transform.eulerAngles.z);
 			facingRight = !facingRight;
 		} else if (_input < 0 && facingRight) {
-			transform.localEulerAngles = new Vector3(0, 180f, transform.eulerAngles.z);
+			transform.localEulerAngles = new Vector3(0, transform.eulerAngles.y + 180f, transform.eulerAngles.z);
 			facingRight = !facingRight;
 		}
 	}
