@@ -78,9 +78,9 @@ public class Movement : MonoBehaviour
 	private void Flip()
 	{
 		if (_input > 0) {
-			transform.eulerAngles = new Vector3(0, 0, 0);
+			transform.localEulerAngles = new Vector3(0, 0, 0);
 		} else if (_input < 0) {
-			transform.eulerAngles = new Vector3(0, 180, 0);
+			transform.localEulerAngles = new Vector3(0, 180, 0);
 		}
 	}
 
