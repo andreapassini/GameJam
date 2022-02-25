@@ -29,33 +29,31 @@ public class PlayerControllerMixedUp : MonoBehaviour
             Gravity(new Vector3(0, 0, 0));
 
         if (OrientationSwitch)
-            SwitchOrientation(new Vector3(0, 0, 0));
+            SwitchOrientation(new Vector3(0, 90, 0));
     }
 
     public void Gravity(Vector3 gravityDir)
     {
         //Calcolo la forza di Gravit� come se si fosse sulla terra
-        
+
         //Trovo il vettore che va dal centro del pianeta al corpo
         // directionToFace = destintion - source
         //Vector3 gravityUp = ((Vector2)_player.position - _mousePosition);
-                
+
         //Vettore Y del Player
         //Vector3 localUp = _player.up;
 
         //Applico la forza di attrazione al corpo
-        _rb.AddForce(gravityDir.normalized * (_rb.mass * GravityForce));
-
-        ////Ruoto il player in modo che:
-        ////      - localUp (il suo asse delle Y) segua la direzione di gravityUp
-        //Quaternion targetRotation = Quaternion.FromToRotation(localUp, gravityUp) * _player.rotation;
-        //_player.rotation = Quaternion.Slerp(_player.rotation, targetRotation, 50f * Time.deltaTime);
-
+        _rb.gravityScale = 0f;
+        _rb.AddForce(gravityDir.normalized * (_rb.mass * GravityForce));        
     }
 
-    public void SwitchOrientation(Vector3 orientationDir)
+    public void SwitchOrientation(Vector3 gravityDir)
     {
-
+        ////Ruoto il player in modo che:
+        ////      - localUp (il suo asse delle Y) segua la direzione di gravityUp
+        Quaternion targetRotation = Quaternion.FromToRotation(transform.up, gravityDir) * transform.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 50f * Time.deltaTime);
     }
 
     private void OnDrawGizmos()
