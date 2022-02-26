@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
 	[SerializeField] float speed = 100f;
 	[SerializeField] float jumpForce;
+
+	[SerializeField] float fallMultiplier = 2.5f;
+	[SerializeField] float lowJumpMultiplier = 2f;
+
 	private float _input;
 	private bool _isJumping, _isGrounded;
 
@@ -67,6 +69,7 @@ public class Movement : MonoBehaviour
 		_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 
 		Jump();
+		//BetterJump();
 
 		Flip();
 	}
@@ -113,7 +116,7 @@ public class Movement : MonoBehaviour
         if (HasBufferdJump())
         {
 			// Add a bit more force to contrast the difference betweeen collider and groundCheck
-			_rb.AddForce(transform.InverseTransformPoint(transform.up * jumpForce * 2f), ForceMode2D.Impulse);
+			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce * 2f), ForceMode2D.Impulse);
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
 
@@ -135,4 +138,16 @@ public class Movement : MonoBehaviour
 
 		return false;
     }
+
+	public void BetterJump()
+	{
+		if(_rb.velocity.y < 0) 
+		{
+			_rb.velocity += new Vector2(0, transform.position.y) * Physics2D.gravity.y * (fallMultiplier - 1);
+		} 
+		else if(_rb.velocity.y > 0 && !Input.GetMouseButton(0)) 
+		{
+			_rb.velocity += new Vector2(0, transform.position.y) * Physics2D.gravity.y * (lowJumpMultiplier - 1);
+		}
+	}
 }

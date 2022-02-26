@@ -27,27 +27,48 @@ public class PlayerControllerMixedUp : MonoBehaviour
     void Update()
     {
         if (GravitySwitch_Up)
-            Gravity(1);
+            GravityUp();
+
+        if (GravitySwitch_Left)
+            GravityLeft();
     }
 
-    public void Gravity(int up)
+    public void GravityUp()
     {
         if (_switched)
             return;
+        
+        _rb.gravityScale *= -1;
+        _switched = true;
 
-        if(up == 1) {
-            _rb.gravityScale *= -1;
-            _switched = true;
-
-            //Rotate the player in order to face upsideDown
-            Rotation();
-        }
+        //Rotate the player in order to face upsideDown
+        RotationUp();
     }
 
-    public void Rotation()
+    public void GravityLeft()
+	{
+        float gravityForce = _rb.gravityScale;
+        _rb.gravityScale = 0f;
+        _rb.AddForce(transform.TransformPoint(Vector2.up * -GravityForce), ForceMode2D.Force);
+
+        RotationLeft();
+    }
+
+    public void RotationUp()
     {
         _rb.freezeRotation = false;
         transform.eulerAngles = new Vector3(0, 0, 180f);
+
+        _rb.freezeRotation = true;
+
+        // y rotation for upsideDown walk
+        _movement.facingRight = !_movement.facingRight;
+    }
+
+    public void RotationLeft()
+	{
+        _rb.freezeRotation = false;
+        transform.eulerAngles = new Vector3(0, 0, 270f);
 
         _rb.freezeRotation = true;
 
