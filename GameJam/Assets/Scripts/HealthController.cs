@@ -7,7 +7,7 @@ public class HealthController : MonoBehaviour
     private float _health;
 
     private Animator _animator;
-    [SerializeField] private AudioSource _source;
+    public GameObject ParticleDeath;
 
 
     void Start()
@@ -18,15 +18,9 @@ public class HealthController : MonoBehaviour
         //_source = GetComponent<AudioSource>();
     }
 
-	private void Update()
-	{
-        if (Input.GetMouseButtonDown(1))
-            Die();
-	}
-
 	public void Die()
 	{
-        _source.Play();
+        Instantiate(ParticleDeath, transform.position, Quaternion.identity);
 
         // PLay animation
         _animator.SetBool("isDead", true);
