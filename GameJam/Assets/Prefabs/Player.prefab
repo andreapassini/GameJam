@@ -431,7 +431,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87
   groundCheck: {fileID: 1085198949796720375}
-  jumpBuffer: 0.25
+  jumpBuffer: 0.5
   facingRight: 1
 --- !u!50 &1085198949619918717
 Rigidbody2D:
