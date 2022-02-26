@@ -13,17 +13,21 @@ public class MovingWalls : MonoBehaviour
     [SerializeField] LayerMask rightWhatIsStop;
     [SerializeField] LayerMask leftWhatIsStop;
 
-    public float _movingRate;
+    public float MovingRate;
 
     public bool _stop = false;
 
-    private Transform _startingPosLeft;
-    private Transform _startingPosRight;
+    private Vector3 _startingPosLeft;
+    private Vector3 _startingPosRight;
+
+    private float _startingMovingRate;
 
     void Start()
     {
-        _startingPosLeft = leftWall;
-        _startingPosRight = rightWall;
+        _startingMovingRate = MovingRate;
+
+        _startingPosLeft = new Vector3(leftWall.position.x, leftWall.position.y, 0);
+        _startingPosRight = new Vector3(rightWall.position.x, rightWall.position.y, 0);
 
         StartCoroutine(MoveWalls());
     }
@@ -34,10 +38,8 @@ public class MovingWalls : MonoBehaviour
         {
             Move();
 
-            yield return new WaitForSeconds(_movingRate);
+            yield return new WaitForSeconds(MovingRate);
         }
-
-        
     }
 
     private void Move()
@@ -62,9 +64,19 @@ public class MovingWalls : MonoBehaviour
         return false;
 	}
 
-    public void ResetPosition() 
+    public void ResetPosition(float movingRate) 
     {
-        leftWall = _startingPosLeft;
-        rightWall = _startingPosRight;
+        leftWall.position = _startingPosLeft;
+        rightWall.position = _startingPosRight;
+
+        //MovingRate = movingRate;
+
+        _stop = false;
+        //StartCoroutine(MoveWalls());
+    }
+
+    public void Stop()
+    {
+        _stop = true;
     }
 }
