@@ -17,8 +17,14 @@ public class MovingWalls : MonoBehaviour
 
     public bool _stop = false;
 
+    private Transform _startingPosLeft;
+    private Transform _startingPosRight;
+
     void Start()
     {
+        _startingPosLeft = leftWall;
+        _startingPosRight = rightWall;
+
         StartCoroutine(MoveWalls());
     }
 
@@ -55,4 +61,10 @@ public class MovingWalls : MonoBehaviour
 
         return false;
 	}
+
+    public void ResetPosition() 
+    {
+        leftWall = _startingPosLeft;
+        rightWall = _startingPosRight;
+    }
 }

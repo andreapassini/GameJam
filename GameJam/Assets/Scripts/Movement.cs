@@ -116,7 +116,7 @@ public class Movement : MonoBehaviour
         if (HasBufferdJump())
         {
 			// Add a bit more force to contrast the difference betweeen collider and groundCheck
-			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce * 2f), ForceMode2D.Impulse);
+			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce), ForceMode2D.Impulse);
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
 

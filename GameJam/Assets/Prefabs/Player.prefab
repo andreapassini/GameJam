@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 80
+  jumpForce: 50
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   whatIsGround:
