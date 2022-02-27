@@ -22,5 +22,15 @@ public static class GameManager
 		// Add Transition
 	}
 
+	public static void PlayLvlStringente()
+    {
+		// Load scene
+		SceneManager.LoadScene("LivelloStringente");
+	}
+
+	public static void PlayLvlFinale()
+    {
+
+    }
 
 }

@@ -21,6 +21,9 @@ public class MovingWalls : MonoBehaviour
     private Vector3 _startingPosRight;
 
     private float _startingMovingRate;
+    private int _countPoints = 0;
+
+    [SerializeField] private HealthController _player;
 
     void Start()
     {
@@ -32,6 +35,11 @@ public class MovingWalls : MonoBehaviour
         StartCoroutine(MoveWalls());
     }
 
+    private void Update()
+    {
+        
+    }
+
     private IEnumerator MoveWalls()
     {
         while (!CheckCollision())
@@ -39,6 +47,20 @@ public class MovingWalls : MonoBehaviour
             Move();
 
             yield return new WaitForSeconds(MovingRate);
+        }
+
+        _player.Die();
+
+        if(_countPoints < 3)
+        {
+            // Restart from level 1
+            GameManager.PlayStartScene();
+        }
+
+        if (_countPoints == 3)
+        {
+            // Go to last level
+            GameManager.PlayLvlFinale();
         }
     }
 
@@ -72,7 +94,8 @@ public class MovingWalls : MonoBehaviour
         MovingRate = movingRate;
 
         _stop = false;
-        //StartCoroutine(MoveWalls());
+
+        _countPoints++;
     }
 
     public void Stop()
