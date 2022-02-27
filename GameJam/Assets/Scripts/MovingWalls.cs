@@ -25,6 +25,8 @@ public class MovingWalls : MonoBehaviour
 
     [SerializeField] private HealthController _player;
 
+    public GameObject MovingEffect;
+
     void Start()
     {
         _startingMovingRate = MovingRate;
@@ -37,6 +39,10 @@ public class MovingWalls : MonoBehaviour
 
     private void Update()
     {
+        if (CheckCollision() && _player)
+        {
+            _player.Die();
+        }
         
     }
 
@@ -47,9 +53,7 @@ public class MovingWalls : MonoBehaviour
             Move();
 
             yield return new WaitForSeconds(MovingRate);
-        }
-
-        _player.Die();
+        }      
 
         if(_countPoints < 3)
         {
@@ -66,6 +70,8 @@ public class MovingWalls : MonoBehaviour
 
     private void Move()
     {
+        Instantiate(MovingEffect);
+
         Vector3 _spaceMove = new Vector3(1, 0f, 0);
 
         leftWall.position += _spaceMove;
@@ -74,7 +80,7 @@ public class MovingWalls : MonoBehaviour
 
     public bool CheckCollision()
 	{
-        if (Physics2D.OverlapCircle(left_collisionCheck.position, StopRadius, leftWhatIsStop)) 
+        if (Physics2D.OverlapCircle(left_collisionCheck.position, StopRadius, leftWhatIsStop))
             return true;
 
         if (Physics2D.OverlapCircle(right_collisionCheck.position, StopRadius, rightWhatIsStop)) 

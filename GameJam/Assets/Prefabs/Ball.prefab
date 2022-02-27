@@ -135,7 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 371226002839592522}
   MovingWalls: {fileID: 0}
-  time: 1
+  TimeMoveWall: 0
+  SoundEffect: {fileID: 3997040446690114807, guid: 55a07612383a95e43ad2abdf8762f95b, type: 3}
 --- !u!50 &326945973
 Rigidbody2D:
   serializedVersion: 4

@@ -13,6 +13,10 @@ public class BallController : MonoBehaviour
 
     public float TimeMoveWall;
 
+    public GameObject SoundEffect;
+
+    private bool _vergin = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +27,19 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _animator.SetTrigger("taken");
+        if (_vergin)
+        {
+            _vergin = !_vergin;
 
-        MovingWalls.Stop();
+            _animator.SetTrigger("taken");
 
-        Die();
+            Instantiate(SoundEffect);
+
+            MovingWalls.Stop();
+
+            Die();
+        }
+        
     }
 
     public void Die()
