@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
 
     private Collider2D _collider2D;
 
-    public float time;
+    public float TimeMoveWall;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +36,6 @@ public class BallController : MonoBehaviour
 
         MovingWalls.ResetPosition(MovingWalls.MovingRate);
 
-        Destroy(gameObject, time);
+        Destroy(gameObject, TimeMoveWall);
     }
 }

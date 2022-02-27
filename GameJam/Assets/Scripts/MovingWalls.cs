@@ -69,7 +69,7 @@ public class MovingWalls : MonoBehaviour
         leftWall.position = _startingPosLeft;
         rightWall.position = _startingPosRight;
 
-        //MovingRate = movingRate;
+        MovingRate = movingRate;
 
         _stop = false;
         //StartCoroutine(MoveWalls());
