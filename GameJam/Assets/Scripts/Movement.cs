@@ -121,7 +121,8 @@ public class Movement : MonoBehaviour
 			// Stop 
 			_rb.velocity = new Vector2 (0f, 0f);
 
-			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce), ForceMode2D.Impulse);
+			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce) , ForceMode2D.Impulse);
+
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
 

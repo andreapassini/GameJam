@@ -431,7 +431,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87
   groundCheck: {fileID: 1085198949796720375}
-  jumpBuffer: 0.5
+  jumpBuffer: 0.25
   facingRight: 1
 --- !u!50 &1085198949619918717
 Rigidbody2D:
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHealth: 100
-  ParticleDeath: {fileID: 0}
+  ParticleDeath: {fileID: 7466514469118438847, guid: 55c5c6129a8e65b43b773cba853f543b, type: 3}
 --- !u!1 &1085198949796720374
 GameObject:
   m_ObjectHideFlags: 0
