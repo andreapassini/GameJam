@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
 	private LevelSwapper LevelSwapper;
 	private Animator _animator;
 
+	//public float jumpHeight = 10f;
+
 	private void Awake()
 	{
 		_rb = gameObject.GetComponent<Rigidbody2D>();
@@ -92,6 +94,8 @@ public class Movement : MonoBehaviour
 
 	private void Jump()
 	{
+		//float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * _rb.gravityScale * _rb.mass));
+
 		if (!_isGrounded)
 		{
 			_animator.SetBool("isJumping", false);
@@ -104,7 +108,7 @@ public class Movement : MonoBehaviour
 			// Stop 
 			_rb.velocity = new Vector2(0f, 0f);
 
-			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce) , ForceMode2D.Impulse);
+			_rb.AddForce(transform.InverseTransformPoint(new Vector2(0, jumpForce)) , ForceMode2D.Impulse);
 
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;

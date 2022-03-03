@@ -15903,30 +15903,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1085198949619918716, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1085198949619918716, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
-      propertyPath: jumpForce
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 1085198949619918716, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
-      propertyPath: jumpBuffer
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1085198949619918717, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
-      propertyPath: m_GravityScale
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1085198949619918727, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8502308285317305654, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
-      propertyPath: ParticleDeath
-      value: 
-      objectReference: {fileID: 7466514469118438847, guid: 55c5c6129a8e65b43b773cba853f543b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
 --- !u!114 &854380686 stripped
