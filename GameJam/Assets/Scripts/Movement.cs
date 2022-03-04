@@ -27,11 +27,12 @@ public class Movement : MonoBehaviour
 	private LevelSwapper LevelSwapper;
 	private Animator _animator;
 
-	public AudioSource AudioSource;
+	public AudioSource AudioSourceFootStep;
 
 	public float SecondStepTime;
 	private float _firstStepTime;
 	private bool _stopedWalking = true;
+	private bool _falling = false;
 
 	private void Awake()
 	{
@@ -66,7 +67,7 @@ public class Movement : MonoBehaviour
 			if (_isGrounded && ((Time.time - _firstStepTime > SecondStepTime) || _stopedWalking))
             {
 				_stopedWalking = false;
-				AudioSource.Play();
+				AudioSourceFootStep.Play();
 				_firstStepTime = Time.time;
 			}
 
@@ -75,6 +76,17 @@ public class Movement : MonoBehaviour
 			_animator.SetBool("isRunning", false);
 			_stopedWalking = true;
 		}
+
+		if (!_isGrounded)
+			_falling = true;
+        else if(_falling)
+        {
+			// Play sound when landed
+			if (_isGrounded)
+				AudioSourceFootStep.Play();
+			_falling = false;
+		}
+			
 	}
 
 	private void FixedUpdate()
@@ -112,7 +124,7 @@ public class Movement : MonoBehaviour
 		if (!_isGrounded)
 		{
 			_animator.SetBool("isJumping", false);
-
+			
 			return;
 		}
 
