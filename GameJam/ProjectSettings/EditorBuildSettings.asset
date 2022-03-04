@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final.unity
     guid: 89b56a0abe8364442966daa6b936367d
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3b99838f08e467448b20574ee0697e03
+  - enabled: 1
+    path: Assets/Scenes/LivelloStringente.unity
+    guid: deb64fe1b06449c45be1ea7359321f01
   m_configObjects: {}
