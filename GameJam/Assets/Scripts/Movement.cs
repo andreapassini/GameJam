@@ -27,6 +27,12 @@ public class Movement : MonoBehaviour
 	private LevelSwapper LevelSwapper;
 	private Animator _animator;
 
+	public AudioSource AudioSource;
+
+	public float SecondStepTime;
+	private float _firstStepTime;
+	private bool _stopedWalking = true;
+
 	private void Awake()
 	{
 		_rb = gameObject.GetComponent<Rigidbody2D>();
@@ -54,9 +60,20 @@ public class Movement : MonoBehaviour
 		if(_input != 0)
         {
 			_animator.SetBool("isRunning", true);
+
+			// Footstep sound
+			// Play when walking and some time passed
+			if (_isGrounded && ((Time.time - _firstStepTime > SecondStepTime) || _stopedWalking))
+            {
+				_stopedWalking = false;
+				AudioSource.Play();
+				_firstStepTime = Time.time;
+			}
+
         } else
         {
 			_animator.SetBool("isRunning", false);
+			_stopedWalking = true;
 		}
 	}
 
