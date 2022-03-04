@@ -7,6 +7,9 @@ public class CameraController : MonoBehaviour
     public bool FollowVertical;
     public bool FollowHorizontal;
 
+    public float XOffset;
+    public float YOffset;
+
      // Update is called once per frame
     void Update()
     {
@@ -15,7 +18,7 @@ public class CameraController : MonoBehaviour
         {
             if (FollowHorizontal && FollowVertical)
             {
-                transform.position = new Vector3(Player.position.x, Player.position.y, transform.position.z);
+                transform.position = new Vector3(Player.position.x + XOffset, Player.position.y + YOffset, transform.position.z);
                 return;
             }
 
