@@ -30,7 +30,12 @@ public static class GameManager
 
 	public static void PlayLvlFinale()
     {
+		SceneManager.LoadScene("Final");
+	}
 
-    }
+	public static void PlayLvlMainMenu()
+    {
+		SceneManager.LoadScene("MainMenu");
+	}
 
 }

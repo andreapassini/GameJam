@@ -7,6 +7,6 @@ public class Ending : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //end
-        GameManager.PlayStartScene();
+        GameManager.PlayLvlMainMenu();
     }
 }
