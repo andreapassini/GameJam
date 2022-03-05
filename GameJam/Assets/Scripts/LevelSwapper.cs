@@ -36,10 +36,6 @@ public class LevelSwapper: MonoBehaviour
 		spriteRenderer = tileRed.GetComponent<TilemapRenderer> ();
         spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 
-	    
-
-
-
 		_blueActive = false;
 	}
 
@@ -54,7 +50,6 @@ public class LevelSwapper: MonoBehaviour
 		spriteRenderer = tileBlue.GetComponent<TilemapRenderer> ();
         spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 
-		
 
 		_blueActive = true;
 	}
