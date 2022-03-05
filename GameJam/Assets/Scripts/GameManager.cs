@@ -1,41 +1,101 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
+using System.Collections;
 
 public class GameManager: MonoBehaviour
 {
-	// I could use a FSM
+	// I could use an FSM
 
-	public static void PlayStartScene()
+	public Animator Animator;
+	public float TransitionTime = 1f;
+
+	public void PlayStartScene()
 	{
-		// Load scene
-		SceneManager.LoadScene("Start");
-
-		// Add Transition
+		StartCoroutine(C_PlayStartScene());
 	}
 
-	public static void PlayMainScene()
+	public void PlayMainScene()
 	{
-		// Load scene
-		SceneManager.LoadScene("Main");
-
-		// Add Transition
+		StartCoroutine(C_PlayMainScene());
 	}
 
-	public static void PlayLvlStringente()
+	public void PlayLvlStringente()
     {
-		// Load scene
+		StartCoroutine(C_PlayLvlStringente());
+	}
+
+	public void PlayLvlFinale()
+    {
+		StartCoroutine(C_PlayLvlFinale());
+	}
+
+	public void PlayLvlMainMenu()
+    {
+		StartCoroutine(C_PlayLvlMainMenu());
+	}
+
+    #region Coruotines
+
+    private IEnumerator C_PlayStartScene()
+    {
+		// Play animation
+		Animator.SetTrigger("transition");
+
+		// Wait for the end of the animation
+		yield return new WaitForSeconds(TransitionTime);
+
+		// Load new Scene
+		SceneManager.LoadScene("Start");
+	}
+
+	private IEnumerator C_PlayMainScene()
+	{
+		// Play animation
+		Animator.SetTrigger("transition");
+
+		// Wait for the end of the animation
+		yield return new WaitForSeconds(TransitionTime);
+
+		// Load new Scene
+		SceneManager.LoadScene("Main");
+	}
+
+	private IEnumerator C_PlayLvlStringente()
+	{
+		// Play animation
+		Animator.SetTrigger("transition");
+
+		// Wait for the end of the animation
+		yield return new WaitForSeconds(TransitionTime);
+
+		// Load new Scene
 		SceneManager.LoadScene("LivelloStringente");
 	}
 
-	public static void PlayLvlFinale()
-    {
+	private IEnumerator C_PlayLvlFinale()
+	{
+		// Play animation
+		Animator.SetTrigger("transition");
+
+		// Wait for the end of the animation
+		yield return new WaitForSeconds(TransitionTime);
+
+		// Load new Scene
 		SceneManager.LoadScene("Final");
 	}
 
-	public static void PlayLvlMainMenu()
-    {
+	private IEnumerator C_PlayLvlMainMenu()
+	{
+		// Play animation
+		Animator.SetTrigger("transition");
+
+		// Wait for the end of the animation
+		yield return new WaitForSeconds(TransitionTime);
+
+		// Load new Scene
 		SceneManager.LoadScene("MainMenu");
 	}
+
+    #endregion
 
 }

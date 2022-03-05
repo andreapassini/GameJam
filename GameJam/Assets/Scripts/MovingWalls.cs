@@ -27,6 +27,8 @@ public class MovingWalls : MonoBehaviour
 
     public GameObject MovingEffect;
 
+    public Transform LevelLoader;
+
     void Start()
     {
         _startingMovingRate = MovingRate;
@@ -58,13 +60,13 @@ public class MovingWalls : MonoBehaviour
         if(_countPoints < 3)
         {
             // Restart from level 1
-            GameManager.PlayStartScene();
+            LevelLoader.GetComponent<GameManager>().PlayStartScene();
         }
 
         if (_countPoints == 3)
         {
             // Go to last level
-            GameManager.PlayLvlFinale();
+            LevelLoader.GetComponent<GameManager>().PlayLvlFinale();
         }
     }
 

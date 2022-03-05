@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Ending : MonoBehaviour
 {
+
+    public Transform LevelLoader; 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //end
-        GameManager.PlayLvlMainMenu();
+        LevelLoader.GetComponent<GameManager>().PlayLvlMainMenu();
     }
 }
