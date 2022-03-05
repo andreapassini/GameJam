@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public static class GameManager
+public class GameManager: MonoBehaviour
 {
 	// I could use a FSM
 
