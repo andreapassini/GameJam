@@ -8,6 +8,6 @@ public class BedTrigger : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		LevelLoarder.GetComponent<GameManager>().PlayMainScene();
+		LevelLoarder.GetComponent<GameManager>().PlayLvlStringente();
 	}
 }

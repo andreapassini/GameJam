@@ -34,9 +34,19 @@ public class GameManager: MonoBehaviour
 		StartCoroutine(C_PlayLvlMainMenu());
 	}
 
-    #region Coruotines
+	public void PlayLvlDistorted()
+    {
+		StartCoroutine(C_PlayLvlMainMenu());
+	}
 
-    private IEnumerator C_PlayStartScene()
+	public void PlayLvlMain()
+	{
+		StartCoroutine(C_PlayLvlMain());
+	}
+
+	#region Coruotines
+
+	private IEnumerator C_PlayStartScene()
     {
 		// Play animation
 		Animator.SetTrigger("transition");
@@ -96,6 +106,30 @@ public class GameManager: MonoBehaviour
 		SceneManager.LoadScene("MainMenu");
 	}
 
-    #endregion
+	private IEnumerator C_PlayLvlDistorted()
+	{
+		// Play animation
+		Animator.SetTrigger("transition");
+
+		// Wait for the end of the animation
+		yield return new WaitForSeconds(TransitionTime);
+
+		// Load new Scene
+		SceneManager.LoadScene("Distorted");
+	}
+
+	private IEnumerator C_PlayLvlMain()
+	{
+		// Play animation
+		Animator.SetTrigger("transition");
+
+		// Wait for the end of the animation
+		yield return new WaitForSeconds(TransitionTime);
+
+		// Load new Scene
+		SceneManager.LoadScene("Main");
+	}
+
+	#endregion
 
 }
