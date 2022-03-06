@@ -425,15 +425,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 65
+  jumpForce: 22
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 87
+    m_Bits: 6231
   groundCheck: {fileID: 1085198949796720375}
   jumpBuffer: 0.5
-  facingRight: 1
+  facingRight: 0
+  LevelSwapper: {fileID: 0}
   AudioSourceFootStep: {fileID: 2856915065320092903}
   SecondStepTime: 0.5
 --- !u!50 &1085198949619918717
@@ -448,10 +449,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: c617028f373e6dd4a868bf07fd055623, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1

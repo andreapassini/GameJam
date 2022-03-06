@@ -133,7 +133,8 @@ public class Movement : MonoBehaviour
 			// Stop 
 			_rb.velocity = new Vector2(0f, 0f);
 
-			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce) , ForceMode2D.Impulse);
+			//_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce) , ForceMode2D.Impulse);
+			_rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
 
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
@@ -150,7 +151,9 @@ public class Movement : MonoBehaviour
 			// Stop 
 			_rb.velocity = new Vector2 (0f, 0f);
 
-			_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce), ForceMode2D.Impulse);
+			//_rb.AddForce(transform.InverseTransformPoint(Vector2.up * jumpForce), ForceMode2D.Impulse);
+			_rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+
 			_isJumping = false;
 			_lastTimeJumpPressed = 0f;
 
@@ -177,11 +180,11 @@ public class Movement : MonoBehaviour
 	{
 		if(_rb.velocity.y < 0) 
 		{
-			_rb.velocity += new Vector2(0, transform.position.y) * Physics2D.gravity.y * (fallMultiplier - 1);
+			_rb.velocity += new Vector2(0, _rb.velocity.y) * Physics2D.gravity.y * (fallMultiplier - 1);
 		} 
 		else if(_rb.velocity.y > 0 && !Input.GetMouseButton(0)) 
 		{
-			_rb.velocity += new Vector2(0, transform.position.y) * Physics2D.gravity.y * (lowJumpMultiplier - 1);
+			_rb.velocity += new Vector2(0, _rb.velocity.y) * Physics2D.gravity.y * (lowJumpMultiplier - 1);
 		}
 	}
 }

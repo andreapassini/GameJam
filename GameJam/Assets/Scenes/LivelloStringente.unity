@@ -15845,6 +15845,18 @@ PrefabInstance:
       propertyPath: jumpBuffer
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1085198949619918716, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
+      propertyPath: facingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085198949619918716, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
+      propertyPath: fallMultiplier
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085198949619918716, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
+      propertyPath: lowJumpMultiplier
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1085198949619918727, guid: 2fa83274209dc4142ad81046b9ea9fca, type: 3}
       propertyPath: m_Name
       value: Player
