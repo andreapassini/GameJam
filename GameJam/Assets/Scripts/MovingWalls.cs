@@ -66,7 +66,7 @@ public class MovingWalls : MonoBehaviour
         if (_countPoints == 3)
         {
             // Go to last level
-            LevelLoader.GetComponent<GameManager>().PlayLvlFinale();
+            LevelLoader.GetComponent<GameManager>().PlayLvlMain();
         }
     }
 

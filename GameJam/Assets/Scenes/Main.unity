@@ -1983,6 +1983,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35a23c1a391f84a47a843434b9572a7c, type: 3}
+--- !u!114 &1464488651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2324900841456135571, guid: 35a23c1a391f84a47a843434b9572a7c, type: 3}
+  m_PrefabInstance: {fileID: 1464488650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ed63b243cbf0e41b55f7f18a18643e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1508787297
 GameObject:
   m_ObjectHideFlags: 0
@@ -4545,6 +4556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002033224}
   - component: {fileID: 2002033225}
+  - component: {fileID: 2002033226}
   m_Layer: 0
   m_Name: DistortionTrigger
   m_TagString: Untagged
@@ -4592,6 +4604,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.866085, y: 1.8503399}
   m_EdgeRadius: 0
+--- !u!114 &2002033226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002033223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804958f1caccdd94783d7b9ed2582cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 1464488651}
 --- !u!1001 &1085198948384292856
 PrefabInstance:
   m_ObjectHideFlags: 0
