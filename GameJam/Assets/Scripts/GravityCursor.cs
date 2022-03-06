@@ -16,12 +16,14 @@ public class GravityCursor : MonoBehaviour
 
     private Vector2 _mousePosition;
 
+    private bool _activated = false;
+
     // Start is called before the first frame update
     void Start()
     {
         _rbPlayer = _player.GetComponent<Rigidbody2D>();
-         _gravityForce = GravityForce;
-         _gravityRadius = GravityRadius;
+        _gravityForce = GravityForce;
+        _gravityRadius = GravityRadius;
     }
 
     // Update is called once per frame
@@ -29,12 +31,11 @@ public class GravityCursor : MonoBehaviour
     {
         _mousePosition = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0)) 
-        { 
-            //_startCoroutine = true;
+        if (Input.GetMouseButtonDown(0) && !_activated) 
+        {
+            _activated = true;
             StartCoroutine(GravityTimer()); 
         }   
-        
 
     }
 
@@ -76,17 +77,16 @@ public class GravityCursor : MonoBehaviour
         var end = Time.time + GravityRadius;
         _gravityForce = GravityForce;
 
-          while (Time.time < end)
-          {
+        while (Time.time < end)
+        {
             Gravity();
             _gravityRadius = end - Time.time;
             yield return null;
-          }
+        }
 
         _gravityForce = 0f;
         _gravityRadius = GravityRadius;
-            
-          
+        _activated = false;
     }
 
 }
