@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
 
 	public bool facingRight = true;
 
-	private LevelSwapper LevelSwapper;
+	public LevelSwapper LevelSwapper;
 	private Animator _animator;
 
 	public AudioSource AudioSourceFootStep;
