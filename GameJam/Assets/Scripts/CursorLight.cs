@@ -32,7 +32,7 @@ public class CursorLight : MonoBehaviour
         
         while (Time.time < end)
         {
-            transform.localScale = new Vector2(transform.localScale.x - 1f, transform.localScale.y - 1f);
+            transform.localScale = new Vector3(transform.localScale.x - 1f, transform.localScale.y - 1f, transform.localScale.z);
             yield return null;
         }
 
